@@ -7,7 +7,7 @@ const app = express();
 const PORT = 4040;
 
 app.use("/", globalRouter);
-app.use("/stories", storyRouter);
 app.use("/users", userRouter);
+app.use("/stories", storyRouter);
 
 app.listen(PORT, () => console.log(`Listening!`));

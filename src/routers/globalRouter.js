@@ -1,11 +1,13 @@
 import express from "express";
+import { home, trending, newStories } from "../controllers/storiesController";
+import { join, login } from "../controllers/usersController";
 
 const globalRouter = express.Router();
 
-globalRouter.get("/", (res, req) => console.log("root"));
-globalRouter.get("/trending", (res, req) => console.log("trending"));
-globalRouter.get("/new", (res, req) => console.log("new"));
-globalRouter.get("/join", (res, req) => console.log("join"));
-globalRouter.get("/login", (res, req) => console.log("login"));
+globalRouter.get("/", home);
+globalRouter.get("/trending", trending);
+globalRouter.get("/new", newStories);
+globalRouter.get("/join", join);
+globalRouter.get("/login", login);
 
 export default globalRouter;
