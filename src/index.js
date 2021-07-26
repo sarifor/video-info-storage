@@ -13,4 +13,5 @@ app.use("/", globalRouter);
 app.use("/users", userRouter);
 app.use("/stories", storyRouter);
 
+// Codesanbox does not need PORT :)
 app.listen(PORT, () => console.log(`Listening!`));
