@@ -1,10 +1,7 @@
-export const join = (req, res) =>
-  res.render("join", { pageTitle: "join it is" });
-export const login = (req, res) =>
-  res.render("login", { pageTitle: "login it is" });
+export const join = (req, res) => res.render("join", { pageTitle: "Join" });
+export const login = (req, res) => res.render("login", { pageTitle: "Login" });
 export const seeUsers = (req, res) =>
-  res.render("seeUsers", { pageTitle: "seeUsers it is" });
-export const seeUser = (req, res) =>
-  res.render("seeUser", { pageTitle: "seeUser it is" });
+  res.render("users", { pageTitle: "Users" });
+export const seeUser = (req, res) => res.render("user", { pageTitle: "User" });
 export const editProfile = (req, res) =>
-  res.render("editProfile", { pageTitle: "editProfile it is" });
+  res.render("editProfile", { pageTitle: "Edit Profile" });

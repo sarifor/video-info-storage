@@ -1,12 +1,9 @@
-export const home = (req, res) =>
-  res.render("home", { pageTitle: "home it is" }); //왜 안 나와?
-export const trending = (req, res) =>
-  res.render("trending", { pageTitle: "trending it is" });
-export const newStories = (req, res) =>
-  res.render("newStories", { pageTitle: "newStories it is" });
+export const home = (req, res) => res.render("home", {pageTitle: "Home"})
+export const trending = (req, res) => res.render("trending", {pageTitle: "Trending"})
+export const newStories = (req, res) => res.render("stories", {pageTitle: "Stories"})
 export const seeStory = (req, res) =>
-  res.render("seeStory", { pageTitle: "seeStory it is" });
+  res.render("story", {pageTitle: "Story"})
 export const editStory = (req, res) =>
-  res.render("editStory", { pageTitle: "editStory it is" });
+  res.render("editStory", {pageTitle: "Edit Story"})
 export const deleteStory = (req, res) =>
-  res.render("deleteStory", { pageTitle: "deleleStory it is" });
+  res.render("deleteStory", {pageTitle: "Delete Story"})
