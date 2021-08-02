@@ -8,7 +8,7 @@ PLEASE FOLLOW THIS STEP
 WE NEED TO SHARE THE SAME DB SO NICO CAN CHECK OUT EVERYBODYS PROJECT.
 🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧🚧
 */
-const YOUR_USERNAME = "karina";
+const YOUR_USERNAME = null;
 
 const MovieSchema = mongoose.Schema({
   title: {
