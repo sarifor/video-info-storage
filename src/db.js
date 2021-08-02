@@ -5,8 +5,7 @@ WE ARE ALL SHARING THE SAME DB
 PLEASE DONT TOUCH THIS FILE
 */
 mongoose.connect(
-  "mongodb+srv://wetubeadmin:wetube4ever@cluster0.uufes.mongodb.net/wetube?retryWrites=true&w=majority",
-  {
+  "mongodb://127.0.0.1:27017/demo", {
     useNewUrlParser: true,
     useFindAndModify: false
   }
