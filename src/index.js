@@ -13,7 +13,9 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(localsMiddleware);
-app.use("/", movieRouter);
 
+app.use("/movies", movieRouter);
+
+// app.get("/", test);
 // Codesanbox does not need PORT :)
 app.listen(PORT, () => console.log(`✅  Server Ready!`));

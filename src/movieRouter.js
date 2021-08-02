@@ -1,7 +1,8 @@
 import express from "express";
+import { seeAllMovies } from "./movieController";
 
 const movieRouter = express.Router();
 
-// Add your magic here!
+movieRouter.get("/", seeAllMovies);
 
 export default movieRouter;
