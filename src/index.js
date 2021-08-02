@@ -3,7 +3,7 @@ import "./models/Movie";
 import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
-import movieRouter from "./movieRouter";
+import routeRouter from "./routeRouter";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
@@ -14,8 +14,6 @@ app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(localsMiddleware);
 
-app.use("/movies", movieRouter);
+app.use("/", routeRouter);
 
-// app.get("/", test);
-// Codesanbox does not need PORT :)
 app.listen(PORT, () => console.log(`✅  Server Ready!`));
