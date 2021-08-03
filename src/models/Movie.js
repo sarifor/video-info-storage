@@ -10,24 +10,12 @@ WE NEED TO SHARE THE SAME DB SO NICO CAN CHECK OUT EVERYBODYS PROJECT.
 */
 const YOUR_USERNAME = "Karina";
 
-const MovieSchema = mongoose.Schema({
-  title: {
-    type: String,
-    required: true
-  },
-  summary: {
-    type: String,
-    required: true
-  },
-  year: {
-    type: Number,
-    required: true
-  },
-  rating: {
-    type: Number,
-    required: true
-  },
-  genres: [String]
+const MovieSchema = new mongoose.Schema({
+  title: String,
+  summary: String,
+  year: Number,
+  rating: Number,
+  genres: String,
 });
 
 if (YOUR_USERNAME === null || typeof YOUR_USERNAME !== "string") {
@@ -45,6 +33,6 @@ if (YOUR_USERNAME.includes("@")) {
   throw Error("❌  Please remove the @ from your username  ❌");
 }
 
-const model = mongoose.model(`Movie_${YOUR_USERNAME}`, MovieSchema);
-
+// const model = mongoose.model(`Movie_${YOUR_USERNAME}`, MovieSchema);
+const model = mongoose.model("Movie_Karina", MovieSchema);
 export default model;

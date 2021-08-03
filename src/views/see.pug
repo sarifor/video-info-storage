@@ -1,5 +1,9 @@
 extends layout/layout
 
 block content
-    h2="see desu"
-    // each video in allMovies 
+    h2="see.pug desu"
+    
+    ul
+        each movie in allMovies
+            li #{movie.name}
+        
