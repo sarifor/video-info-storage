@@ -1,13 +1,9 @@
 import mongoose from "mongoose";
-/*
-DONT TOUCH THIS FILE <3
-WE ARE ALL SHARING THE SAME DB
-PLEASE DONT TOUCH THIS FILE
-*/
+
 mongoose.connect(
   "mongodb://127.0.0.1:27017/demo", {
     useNewUrlParser: true,
-    // useUnifiedTopology: true,
+    useUnifiedTopology: true,
   }
 );
 
