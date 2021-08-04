@@ -30,16 +30,29 @@ export const watch = async (req, res) => {
   return res.render("watch", { amovie });
 }
 
-/*
-export const getEdit = (req, res) => {
+export const getEdit = async (req, res) => {
   // params에서 얻은 아이디를 MOVIE DB에 돌려 movie obj 확보하여, videoEdit.pug로 보내기
+  const { id } = req.params;
+  const amovie = await Movie.findById(id);
+  return res.render("edit", { pageTitle: "getEdit", amovie });
 }
 
-export const postEdit = (req, res) => {
+export const postEdit = async (req, res) => {
   // params에서 얻은 아이디와 body에서 얻은 새 값을 MOVIE DB에 돌리고, /로 돌아가기
+  const { id } = req.params;
+  const { name, summary, year, rating, genres } = req.body;
+  console.log(name, summary, year, rating, genres);
 
+  const amovie = await Movie.findById(id);
+  console.log(amovie);
+
+  // amovie obj에 갱신값 추가하고, Movie.XXX(업뎃하는 함수)로 Movie DB에 업뎃하고, /로 리다이렉트  
+  await Movie.findByIdAndUpdate(id, {name, summary, year, rating, genres});
+  return res.redirect("/");
 }
 
+
+/*
 export const deleteVideo = (req, res) => {
   // params에서 얻은 아이디로 MOVIE DB에서 movie 특정하여 삭제하고, /로 돌아가기
 }
