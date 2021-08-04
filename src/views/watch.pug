@@ -4,4 +4,6 @@ block content
     h2="watch.pug"
     p=amovie.name
     p=amovie.summary
-        
+    
+    h2
+        a(href=`/movies/${amovie._id}/edit`)="Edit"
