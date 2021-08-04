@@ -8,6 +8,6 @@ const MovieSchema = new mongoose.Schema({
   genres: String,
 });
 
-const Movie = mongoose.model("Movie", MovieSchema);
+const Movie = mongoose.model("Movie", MovieSchema, "Donghwa");
 
 export default Movie;
