@@ -13,31 +13,38 @@ export const getUpload = (req, res) => {
     return res.render("upload", { pageTitle: "getUpload" });
 }
 
-/*
-export const postUpload = (res, req) => {
-  const video = {xx, aa, bb, cc} = req.body;
-  Movie.xxx(xx, aa, bb, cc);
+
+export const postUpload = async (req, res) => {
+  const {name, summary, year, rating, genres} = req.body;
+  // console.log(name, summary, year, rating, genres);
+  await Movie.create({
+      name, 
+      summary, 
+      year, 
+      rating, 
+      genres});
   return res.redirect("/");
 }
 
-export const getEdit = (res, req) => {
+/*
+export const getEdit = (req, res) => {
   //params에서 얻은 아이디를 MOVIE DB에 돌려 movie obj 확보하여, videoEdit.pug로 보내기
 }
 
-export const postEdit = (res, req) => {
+export const postEdit = (req, res) => {
   //params에서 얻은 아이디와 body에서 얻은 새 값을 MOVIE DB에 돌리고, /로 돌아가기
 
 }
 
-export const watch = (res, req) => {
+export const watch = (req, res) => {
   //params에서 얻은 아이디를 MOVIE DB에 돌려 movie obj 확보하여, watch.pug로 보내기
 }
 
-export const deleteVideo = (res, req) => {
+export const deleteVideo = (req, res) => {
   //params에서 얻은 아이디로 MOVIE DB에서 movie 특정하여 삭제하고, /로 돌아가기
 }
 
-export const search (res, req) => {
+export const search (req, res) => {
   //params에서 얻은 검색어를 MOVIE DB에 돌려 검색결과 배열을 확보하여, see.pug 하단에 보여주기
 }
 */
