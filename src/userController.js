@@ -1,4 +1,4 @@
-// import User from "./models/User";
+import User from "./models/User";
 
 export const home = (req, res) => {
     console.log("home");
@@ -20,7 +20,13 @@ export const getJoin = (req, res) => {
     res.render("join", { pageTitle: "getJoin!" });
 };
 
-export const postJoin = (req, res) => {
-    console.log("postLogin");
-    res.redirect("home");
+export const postJoin = async (req, res) => {
+    const { body: { username, name, password } } = req;
+    
+    await User.create({
+        username,
+        name,
+        password
+    });
+    res.redirect("/");
 };
