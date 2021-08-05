@@ -14,7 +14,7 @@ export const postLogin = async (req, res) => {
     // req.body의 username과 password를 User DB에 조회하여, 있다면 /로, 없다면 /join으로 보내기
     const { body: { username, password } } = req;    
     
-    const user = await User.exists({
+    const user = await User.find({
         username,
         password
     });
@@ -23,13 +23,12 @@ export const postLogin = async (req, res) => {
         console.log("user nowhere");
         return res.redirect("/join")
     } else {
-        req.session.user = {
-            username,
-        }
-        req.session.save();
-        res.locals.user = req.session.user;
-        console.log("Below is res.locals");
-        console.log(res.locals.user);
+        req.session.user = user;
+        console.log(req.session.user);
+        // req.session.save();
+        // res.locals.user = req.session.user;
+        // console.log("Below is res.locals");
+        // console.log(res.locals.user);
         return res.redirect("/");        
     }
 };
