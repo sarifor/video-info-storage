@@ -3,10 +3,9 @@ extends layout/layout
 block content
     h2="see.pug it is"
     
-    if allMovies
-        each movie in allMovies
-            h2
-                a(href=`/movies/${movie._id}`)=movie.name
+    each movie in allMovies
+        h2
+            a(href=`/movies/${movie._id}`)=movie.name
     else
         p="Please create movies!"
 
