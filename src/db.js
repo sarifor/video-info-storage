@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
-
+/*
+DONT TOUCH THIS FILE <3
+WE ARE ALL SHARING THE SAME DB
+PLEASE DONT TOUCH THIS FILE
+*/
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/demo", {
+  "mongodb+srv://wetubeadmin:wetube4ever@cluster0.uufes.mongodb.net/wetube?retryWrites=true&w=majority",
+  {
     useNewUrlParser: true,
-    useUnifiedTopology: true,
+    useFindAndModify: false
   }
 );
 

@@ -1,68 +1,81 @@
+/*
+You DONT have to import the Movie with your username.
+Because it's a default export we can nickname it whatever we want.
+So import Movie from "./models"; will work!
+You can do Movie.find() or whatever you need like normal!
+*/
 import Movie from "./models/Movie";
 
-export const seeAllMovies = async (req, res) => {
-    // Movie DB의 모든 값을 allMovies 오브젝트에 담아서, see.pug에 보내기
-    const allMovies = await Movie.find({});
-    return res.render("see", { pageTitle: "seeAllMovies", allMovies });
+// Add your magic here!
+export const home = async (req, res) => {
+  const movies = await Movie.find({});
+  res.render("movies", { pageTitle: "Home", movies });
+};
+export const create = async (req, res) => {
+  if (req.method === "GET") {
+    res.render("create", { pageTitle: "Create" });
+  } else if (req.method === "POST") {
+    const {
+      body: { title, summary, year, rating, genres }
+    } = req;
+    const newMovie = await Movie.create({
+      title,
+      summary,
+      year,
+      rating,
+      genres: genres.split(",")
+    });
+    res.redirect(`/${newMovie.id}`);
+  }
+};
+export const detail = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  const movie = await Movie.findById(id);
+  res.render("detail", { movie, pageTitle: movie.title });
 };
 
+export const edit = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  if (req.method === "GET") {
+    const movie = await Movie.findById(id);
+    res.render("edit", { pageTitle: "Edt", movie });
+  } else if (req.method === "POST") {
+    const {
+      body: { title, synopsis, year, rating, genres },
+      params: { id }
+    } = req;
+    await Movie.findByIdAndUpdate(id, {
+      title,
+      synopsis,
+      year,
+      rating,
+      genres: genres.split(",")
+    });
+    res.redirect(`/${id}`);
+  }
+};
 
-export const getUpload = (req, res) => {
-    return res.render("upload", { pageTitle: "getUpload" });
-}
-
-
-export const postUpload = async (req, res) => {
-  const { name, summary, year, rating, genres } = req.body;
-  await Movie.create({
-      name, 
-      summary, 
-      year, 
-      rating, 
-      genres});
-  return res.redirect("/");
-}
-
-export const watch = async (req, res) => {
-  // Movie 리스트를 클릭함으로 params에 담아 보낸 아이디를 MOVIE DB에 돌려 movie obj 확보하여, watch.pug로 보내기
-  const { id } = req.params; // _id가 아닌 이유: movieRouter.get("/:id", watch);
-  const amovie = await Movie.findById(id);
-  return res.render("watch", { amovie });
-}
-
-export const getEdit = async (req, res) => {
-  // params에서 얻은 아이디를 MOVIE DB에 돌려 movie obj 확보하여, videoEdit.pug로 보내기
-  const { id } = req.params;
-  const amovie = await Movie.findById(id);
-  return res.render("edit", { pageTitle: "getEdit", amovie });
-}
-
-export const postEdit = async (req, res) => {
-  // params에서 얻은 아이디와 body에서 얻은 새 값을 MOVIE DB에 돌리고, /로 돌아가기
-  const { id } = req.params;
-  const { name, summary, year, rating, genres } = req.body;
-  console.log(name, summary, year, rating, genres);
-
-  const amovie = await Movie.findById(id);
-  console.log(amovie);
-
-  // amovie obj에 갱신값 추가하고, Movie.XXX로 Movie DB에 업뎃하고, /로 리다이렉트  
-  await Movie.findByIdAndUpdate(id, {name, summary, year, rating, genres});
-  return res.redirect("/");
-}
+export const remove = async (req, res) => {
+  const {
+    params: { id }
+  } = req;
+  await Movie.findByIdAndDelete(id);
+  res.redirect("/");
+};
 
 export const search = async (req, res) => {
-  // params에서 얻은 검색어를 MOVIE DB에 돌려 검색결과 배열을 확보하여, XXX.pug 하단에 보여주기
-  const { word } = req.query; // req.body for get method, req.query for post method
-  const foundMovie = await Movie.findOne({ name: word });
-  return res.render("searchResult", { pageTitle: "searchResult", foundMovie });  
-}
-
-export const deleteVideo = async (req, res) => {
-  // params에서 얻은 아이디로 MOVIE DB에서 movie 특정하여 삭제하고, /로 돌아가기
-  const { id } = req.params;
-  console.log(id);
-  const amovie = await Movie.deleteOne({ _id: id });
-  console.log("Deleted!");
-  return res.redirect("/");  
-}
+  const {
+    query: { title }
+  } = req;
+  const movies = await Movie.find({
+    title: { $regex: new RegExp(`${title}$`, "i") }
+  });
+  res.render("movies", {
+    pageTitle: `Filtering by title: ${title}`,
+    movies
+  });
+};

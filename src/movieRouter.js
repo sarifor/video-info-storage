@@ -1,14 +1,14 @@
 import express from "express";
-import { getUpload, postUpload, watch, getEdit, postEdit, search, deleteVideo } from "./movieController";
+import { home, create, detail, search, edit, remove } from "./movieController";
 
 const movieRouter = express.Router();
 
-movieRouter.get("/upload", getUpload);
-movieRouter.post("/upload", postUpload);
+// Add your magic here!
+movieRouter.get("/", home);
+movieRouter.route("/upload").get(create).post(create);
 movieRouter.get("/search", search);
-movieRouter.get("/:id", watch);
-movieRouter.get("/:id/edit", getEdit);
-movieRouter.post("/:id/edit", postEdit);
-movieRouter.get("/:id/delete", deleteVideo);
+movieRouter.get("/:id", detail);
+movieRouter.route("/:id/edit").get(edit).post(edit);
+movieRouter.get("/:id/delete", remove);
 
 export default movieRouter;
