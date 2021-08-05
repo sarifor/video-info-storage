@@ -1,0 +1,10 @@
+extends layout/layout
+
+block content
+    h2="searchResult.pug"
+
+    if foundMovie
+        #{foundMovie.name}
+        #{foundMovie.summary}
+
+    

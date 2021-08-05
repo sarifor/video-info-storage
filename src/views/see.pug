@@ -6,4 +6,11 @@ block content
     each movie in allMovies
         h2
             a(href=`/movies/${movie._id}`)=movie.name
-        
+    hr
+
+    form(action="/movies/search")
+        div
+            label(for="word") Word for Search: 
+            input(type="text", name="word", value="")
+            input(type="submit", value="Search!")    
+    

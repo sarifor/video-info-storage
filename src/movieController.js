@@ -51,14 +51,12 @@ export const postEdit = async (req, res) => {
   return res.redirect("/");
 }
 
-/*
-export const search (req, res) => {
-  // params에서 얻은 검색어를 MOVIE DB에 돌려 검색결과 배열을 확보하여, see.pug 하단에 보여주기
-  const { id } = req.params;
-  const amovie = await Movie.findById(id);
-  return res.render("edit", { pageTitle: "getEdit", amovie });  
+export const search = async (req, res) => {
+  // params에서 얻은 검색어를 MOVIE DB에 돌려 검색결과 배열을 확보하여, XXX.pug 하단에 보여주기
+  const { word } = req.query; // req.body for get method, req.query for post method
+  const foundMovie = await Movie.findOne({ name: word });
+  return res.render("searchResult", { pageTitle: "searchResult", foundMovie });  
 }
-*/
 
 /*
 export const deleteVideo = (req, res) => {
