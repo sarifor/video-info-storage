@@ -3,10 +3,9 @@ import { home, getLogin, postLogin, getJoin, postJoin } from "./userController";
 
 const userRouter = express.Router();
 
-// Add your magic here!
 userRouter.get("/", home);
 userRouter.get("/login", getLogin);
-userRouter.post("login", postLogin);
+userRouter.post("/login", postLogin);
 userRouter.get("/join", getJoin);
 userRouter.post("/join", postJoin);
 

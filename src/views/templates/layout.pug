@@ -8,4 +8,10 @@ html(lang="en")
     title #{pageTitle} | #{siteTitle}
   body
     main
+      header
+        if locals.user
+          p="User Logined"
+        else
+          p="Please login"
+
       block content
