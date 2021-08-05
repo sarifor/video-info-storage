@@ -1,9 +1,26 @@
-/*
-You DONT have to import the User with your username.
-Because it's a default export we can nickname it whatever we want.
-So import User from "./models"; will work!
-You can do User.find() or whatever you need like normal!
-*/
-import User from "./models/User";
+// import User from "./models/User";
 
-// Add your magic here!
+export const home = (req, res) => {
+    console.log("home");
+    res.render("home", { pageTitle: "home!" });
+};
+
+export const getLogin = (req, res) => {
+    console.log("getLogin");
+    res.render("login", { pageTitle: "getLogin!" });
+};
+
+export const postLogin = (req, res) => {
+    console.log("postLogin");
+    res.redirect("home");
+};
+
+export const getJoin = (req, res) => {
+    console.log("getJoin");
+    res.render("join", { pageTitle: "getJoin!" });
+};
+
+export const postJoin = (req, res) => {
+    console.log("postLogin");
+    res.redirect("home");
+};
