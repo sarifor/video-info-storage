@@ -21,3 +21,6 @@ block content
             input(type="text", name="genres", value=amovie.genres)
         div
             input(type="submit", value="Submit!")
+
+        div
+            a(href=`/movies/${amovie._id}/delete`)="지울래?"

@@ -58,8 +58,11 @@ export const search = async (req, res) => {
   return res.render("searchResult", { pageTitle: "searchResult", foundMovie });  
 }
 
-/*
-export const deleteVideo = (req, res) => {
+export const deleteVideo = async (req, res) => {
   // params에서 얻은 아이디로 MOVIE DB에서 movie 특정하여 삭제하고, /로 돌아가기
+  const { id } = req.params;
+  console.log(id);
+  const amovie = await Movie.deleteOne({ _id: id });
+  console.log("Deleted!");
+  return res.redirect("/");  
 }
-*/
