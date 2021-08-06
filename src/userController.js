@@ -1,13 +1,18 @@
 import User from "./models/User";
 
 export const home = (req, res) => {
-    console.log("home");
-    res.render("home", { pageTitle: "home!" });
+    if (req.session.user) {
+        console.log(req.session.user);
+        return res.render("profile", { pageTitle: "Profile!" }); // return을 써 줘야 함수가 끝난다!
+    } else {
+        console.log(req.session.user);        
+        return res.redirect("/login");
+    }    
 };
 
 export const getLogin = (req, res) => {
     console.log("getLogin");
-    res.render("login", { pageTitle: "getLogin!" });
+    return res.render("login", { pageTitle: "getLogin!" });
 };
 
 export const postLogin = async (req, res) => {
@@ -23,6 +28,7 @@ export const postLogin = async (req, res) => {
         console.log("user nowhere");
         return res.redirect("/join")
     } else {
+        console.log(user);
         req.session.user = user;
         console.log(req.session.user);
         // req.session.save();
