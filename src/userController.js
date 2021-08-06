@@ -1,4 +1,5 @@
 import User from "./models/User";
+import bcrypt from "bcrypt";
 
 export const home = (req, res) => {
     if (req.session.user) {
@@ -46,11 +47,20 @@ export const getJoin = (req, res) => {
 
 export const postJoin = async (req, res) => {
     const { body: { username, name, password } } = req;
-    
+    // password를 해싱하기
+    bcrypt.hash(password, 10, function(err, hash) {
+        console.log(hash);
+        global.hashedPassword = hash; // return hash 하면 안 되는 이유?
+    });
+
+    // console.log(hashedPassword);
+    // res.end();
+
     await User.create({
         username,
         name,
-        password
+        password: hashedPassword
     });
-    res.redirect("/");
+    
+    return res.redirect("/");
 };
