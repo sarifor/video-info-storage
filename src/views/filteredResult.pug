@@ -1,0 +1,6 @@
+extends layout/layout
+
+block content
+    each movie in filteredMovies
+        p #{movie.title} 
+        p #{movie.year}

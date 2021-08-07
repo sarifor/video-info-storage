@@ -4,5 +4,7 @@ import { home, movieDetail, filterMovie } from "./movieController";
 const movieRouter = express.Router();
 
 movieRouter.get("/", home);
+movieRouter.get("/:id", movieDetail);
+movieRouter.get("/filter/:year", filterMovie);
 
 export default movieRouter;
