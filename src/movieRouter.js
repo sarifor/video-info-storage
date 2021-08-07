@@ -1,7 +1,7 @@
-import Router from "express";
+import express from "express";
 import { home, addMovie } from "./movieController";
 
-const movieRouter = Router();
+const movieRouter = express.Router();
 
 movieRouter.get("/", home);
 movieRouter.get("/add", addMovie);
