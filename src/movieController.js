@@ -3,6 +3,12 @@ export const home = (req, res) => {
 };
 
 export const addMovie = (req, res) => {
-    console.log("addMovie!");
-    return res.render("home", { pageTitle: "addMovie" });
+    console.log(req.method);
+    if (req.method === "POST") {
+        console.log("POST here");
+        res.end();
+    }
+    if (req.method === "GET") {
+        return res.render("upload", { pageTitle: "upload" });
+    }
 };

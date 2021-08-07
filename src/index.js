@@ -12,4 +12,4 @@ app.use("/", movieRouter);
 
 app.listen(PORT, () => {
     console.log("Server Connected");
-})
+});
