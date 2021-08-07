@@ -5,7 +5,7 @@ export const home = (req, res) => {
 export const addMovie = (req, res) => {
     console.log(req.method);
     if (req.method === "POST") {
-        console.log("POST here");
+        console.log(req.body);
         res.end();
     }
     if (req.method === "GET") {
