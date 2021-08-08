@@ -1,7 +1,13 @@
 extends templates/layout
 
 block content
-  form(method="post")
-    input(placeholder="Enter Username", type="text", name="username", value="", required=true)
-    input(placeholder="Enter Password", type="text", name="password", value="", required=true)
-    input(type="submit", value="Login!")
+  if errorMessage
+    span=errorMessage
+  form(method="POST")
+    input(placeholder="Username", name="username", type="text", required)
+    input(placeholder="Password", name="password", type="password", required)
+    input(type="submit", value="Login")
+  hr
+  div
+    span Don't have an account yet? 
+    a(href="/join") Create Now &rarr;

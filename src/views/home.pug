@@ -1,4 +1,8 @@
 extends templates/layout
 
 block content
-  h1 Add your magic here
+  h2 #{loggedInUser.name}'s Profile
+  ul
+    li Name : #{loggedInUser.name}
+    li Username : #{loggedInUser.username}
+  hr

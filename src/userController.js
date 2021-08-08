@@ -1,66 +1,74 @@
 import User from "./models/User";
 import bcrypt from "bcrypt";
 
-export const home = (req, res) => {
-    if (req.session.user) {
-        console.log(req.session.user);
-        return res.render("profile", { pageTitle: "Profile!" }); // return을 써 줘야 함수가 끝난다!
-    } else {
-        console.log(req.session.user);        
-        return res.redirect("/login");
-    }    
-};
-
-export const getLogin = (req, res) => {
-    console.log("getLogin");
-    return res.render("login", { pageTitle: "getLogin!" });
-};
-
-export const postLogin = async (req, res) => {
-    // req.body의 username과 password를 User DB에 조회하여, 있다면 /로, 없다면 /join으로 보내기
-    const { body: { username, password } } = req;    
-    
-    const user = await User.find({
-        username,
-        password
-    });
-
-    if (!user) { // == vs. === ?
-        console.log("user nowhere");
-        return res.redirect("/join")
-    } else {
-        console.log(user);
-        req.session.user = user;
-        console.log(req.session.user);
-        // req.session.save();
-        // res.locals.user = req.session.user;
-        // console.log("Below is res.locals");
-        // console.log(res.locals.user);
-        return res.redirect("/");        
-    }
+export const home = async (req, res) => {
+  if (req.session.loggedIn) {
+    return res.render("home", { pageTitle: "Home" });
+  }
+  return res.redirect("/login");
 };
 
 export const getJoin = (req, res) => {
-    console.log("getJoin");
-    res.render("join", { pageTitle: "getJoin!" });
+  res.render("join", { pageTitle: "Join" });
 };
 
 export const postJoin = async (req, res) => {
-    const { body: { username, name, password } } = req;
-    // password를 해싱하기
-    bcrypt.hash(password, 10, function(err, hash) {
-        console.log(hash);
-        global.hashedPassword = hash; // return hash 하면 안 되는 이유?
+  const { name, username, password, password2 } = req.body;
+  const pageTitle = "Join";
+  if (password !== password2) {
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: "Password confirmation does not match."
     });
-
-    // console.log(hashedPassword);
-    // res.end();
-
+  }
+  const exists = await User.findOne({ username });
+  if (exists) {
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: "This username is already taken"
+    });
+  }
+  try {
     await User.create({
-        username,
-        name,
-        password: hashedPassword
+      name,
+      username,
+      password
     });
-    
-    return res.redirect("/");
+    return res.redirect("/login");
+  } catch (error) {
+    return res.status(400).render("join", {
+      pageTitle,
+      errorMessage: error._message
+    });
+  }
+};
+
+export const getLogin = (req, res) => {
+  res.render("login", { pageTitle: "Login" });
+};
+
+export const postLogin = async (req, res) => {
+  const { username, password } = req.body;
+  const pageTitle = "Login";
+  const user = await User.findOne({ username });
+  if (!user) {
+    return res.status(400).render("login", {
+      pageTitle,
+      errorMessage: "This username does not exist."
+    });
+  }
+  const ok = await bcrypt.compare(password, user.password);
+  if (!ok) {
+    return res.status(400).render("login", {
+      pageTitle,
+      errorMessage: "Wrong Password"
+    });
+  }
+  req.session.loggedIn = true;
+  req.session.user = user;
+  return res.redirect("/");
+};
+
+export const logout = (req, res) => {
+  res.status(404).render("404", { pageTitle: "Not Found" });
 };

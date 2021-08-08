@@ -8,8 +8,6 @@ import userRouter from "./userRouter";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
-const PORT = 4040;
-
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -23,4 +21,5 @@ app.use(
 app.use(localsMiddleware);
 app.use("/", userRouter);
 
-app.listen(PORT, () => console.log(`✅  Server Ready!`));
+// Codesanbox does not need PORT :)
+app.listen(() => console.log(`✅  Server Ready!`));
