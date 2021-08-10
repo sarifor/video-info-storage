@@ -1,0 +1,12 @@
+extends base
+
+block content
+    form(action="/read", method="POST")
+        input(placeholder="Upload text file", name="file", value="")
+        input(type="submit", value="Choose File")
+        input(type="submit", value="Convert!")
+
+    if list
+        //show list
+    else
+        p="please upload txt file"
