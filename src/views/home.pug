@@ -1,8 +1,8 @@
 extends base
 
 block content
-    form(action="/read", method="POST")
-        input(placeholder="Upload text file", name="file", value="")
+    form(action="/read", method="POST", enctype="multipart/form-data")
+        input(type="file", value="", placeholder="Upload text file", name="file")
         input(type="submit", value="Choose File")
         input(type="submit", value="Convert!")
 
