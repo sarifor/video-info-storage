@@ -5,6 +5,8 @@ import multer from "multer";
 import fs from "fs";
 
 const app = express();
+const PORT = 4040;
+
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -54,4 +56,4 @@ app.route("/").get(getText).post(uploadFiles.single("text"), postText);
 app.get("/read/:id", showText);
 
 // Codesanbox does not need PORT :)
-app.listen(() => console.log(`Listening!`));
+app.listen(PORT, () => console.log(`Listening!`));
