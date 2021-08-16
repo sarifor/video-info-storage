@@ -1,42 +1,50 @@
 const video = document.querySelector("video");
-const playBtn = document.getElementById("play"); // class 값을 근거로 엘러먼트를 가져오려면?
-const muteBtn = document.getElementById("mute");
-const time = document.getElementById("time");
-const volumeRange = document.getElementById("volume");
+const videoController = document.getElementById("videoController");
+const psBtn = videoController.querySelector("#playPauseBtn");
+const volumeBtn = videoController.querySelector("#volume");
+const volumeRange = videoController.querySelector("#volumeRange");
 
 let volumeValue = 0.5;
 video.volume = volumeValue;
 
-const handlePlayClick = (e) => {
-    if (video.paused) {
-        video.play();
-    } else {
-        video.pause();
-    }
-    playBtn.innerText = video.paused ? "Play" : "Pause";
+const handlePlayAndStop = () => {
+  if (video.paused) {
+    video.play();
+    psBtn.className = "fas fa-pause";
+  } else {
+    video.pause();
+    psBtn.className = "fas fa-play";
+  }
 };
 
-const handleMuteClick = (e) => {
-    if (video.muted) {
-        video.muted = false;
-    } else {
-        video.muted = true;
-    }
-    muteBtn.innerText = video.muted ? "Unmute" : "Mute";
-    volumeRange.value = video.muted ? 0 : volumeValue;
+const handleSound = () => {
+  if (video.muted) {
+    video.muted = false;
+    volumeRange.value = volumeValue;
+    volumeBtn.className = "fas fa-volume-up";
+  } else {
+    video.muted = true;
+    volumeRange.value = 0;
+    volumeBtn.className = "fas fa-volume-mute";
+  }
 };
 
-const handleVolumeChange = (e) => {
-    const { target: { value } } = e;
-    
-    if (video.muted) {
-        video.muted = false;
-        muteBtn.innerText = "Mute";
-    }
-    volumeValue = value; // 글로벌 변수에 값 넣기
-    video.volume = value; // 글로벌 변수에 값 넣기
+const handleVolume = (event) => {
+  const {
+    target: { value }
+  } = event;
+  if (video.muted) {
+    video.muted = false;
+    volumeBtn.className = "fas fa-volume-mute";
+  }
+  if (value === "0") {
+    volumeBtn.className = "fas fa-volume-off";
+  } else {
+    volumeBtn.className = "fas fa-volume-up";
+  }
+  video.volume = volumeValue = value;
 };
 
-playBtn.addEventListener("click", handlePlayClick);
-muteBtn.addEventListener("click", handleMuteClick);
-volumeRange.addEventListener("input", handleVolumeChange);
+psBtn.addEventListener("click", handlePlayAndStop);
+volumeBtn.addEventListener("click", handleSound);
+volumeRange.addEventListener("input", handleVolume);
