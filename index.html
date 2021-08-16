@@ -13,11 +13,18 @@
 
   <body>
     <video
-      controls
       width="700px"
       src="https://serranoarevalo.github.io/notflix/9bfd1023900e31286103369c803c7ee9.ogv"
     ></video>
     <div id="videoController">
+      <input
+        type="range"
+        step="0.1"
+        value="0"
+        min="0"
+        max="1"
+        id="timeline"
+      />
       <i id="playPauseBtn" class="fas fa-play"></i>
       <i id="volume" class="fas fa-volume-up"></i>
       <input
@@ -28,6 +35,9 @@
         max="1"
         id="volumeRange"
       />
+      <i id="time"></i>
+      <input type="button", id="fullScreen", value="Full Screen" />
+
     </div>
   </body>
 </html>
