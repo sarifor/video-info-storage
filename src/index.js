@@ -1,5 +1,3 @@
-const { async } = require("regenerator-runtime");
-
 const recordBtn = document.getElementById("recordBtn");
 const audio = document.querySelector("audio");
 
