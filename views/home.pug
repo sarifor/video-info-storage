@@ -1,0 +1,11 @@
+html(lang="en")
+    head
+    body
+        form(method="POST")
+            textarea(name="tags", placeholder="please write a lot!", value="")
+            input(type="submit", value="Push")
+        if receivedTags
+            each tag in receivedTags
+                p=tag
+        else
+            p="please send tags"
