@@ -1,9 +1,10 @@
 import User from "./models/User";
-// import bcrypt from "bcrypt";
-
+import { showMovies } from "./models/Movie";
 
 export const home = async (req, res) => {
-    return res.render("home");
+    const movies = showMovies(); // ()를 꼭 붙여야 함
+    console.log(movies);
+    return res.render("home", { movies });
 };
 
 export const getJoin = (req, res) => {

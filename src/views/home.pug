@@ -2,3 +2,7 @@ extends templates/layout
 
 block content
     p="home!"
+    if movies
+        each movie in movies
+            p=movie.title
+            p=movie.rank

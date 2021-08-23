@@ -12,8 +12,9 @@ const app = express();
 const PORT = 4040;
 
 app.set("view engine", "pug");
-app.set("views", path.join(__dirname, "views"));
-
+app.set("views", path.join(process.cwd(), "/src/views")); // \ vs. / ?
+console.log(__dirname); // 현재 실행하는 파일의 절대경로 e.g. "index.js가 있는 디렉토리"
+console.log(process.cwd()); // node명령을 호출한 작업디렉터리의 절대경로 e.g. "pacakage.json이 있는 디렉토리"
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
