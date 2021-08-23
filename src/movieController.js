@@ -8,7 +8,7 @@ export const seeAllMovies = async (req, res) => {
 export const movieDetail = async (req, res) => {
     const { id } = req.params;
     try {
-        const movie = await Movie.findOne( { _id: id} );
+        const movie = await Movie.findOne( { _id: { $regex: /12345/ } } );
         return res.render("detail", { movie });
     } catch (e) {
         return res.render("detail", { err: e.message });
