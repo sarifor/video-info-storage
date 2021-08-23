@@ -2,9 +2,8 @@ extends templates/layout
 
 block content
   if err
-    each message in err
-      p=message
-      
+    p=err
+
   form(method="POST")
     input(placeholder="Name", name="name", type="text", required)
     input(placeholder="Username", name="username", type="text", required)
