@@ -5,9 +5,12 @@ const MovieSchema = new mongoose.Schema({
   summary: String,
   year: Number,
   rating: Number,
-  genres: String,
+  genres: {
+    type: [String],
+    required: true,
+  }
 });
 
-const Movie = mongoose.model("Movie", MovieSchema);
+const Movie = mongoose.model("Movie", MovieSchema, "younghwa");
 
 export default Movie;

@@ -1,9 +1,30 @@
 import Movie from "./models/Movie";
 
 export const seeAllMovies = async (req, res) => {
-    // Movie DB의 모든 값을 allMovies 오브젝트에 담아서, see.pug에 보내기
     const allMovies = await Movie.find({});
-    // await Movie.create( { name: "Marina", summary: "ESPA", year: 2011, rating: 5, genres: "Music" } );
-    // console.log(allMovies);
-    return res.render("see", { pageTitle: "title it is", allMovies });
+    return res.render("see", { pageTitle: "title", allMovies });
 };
+
+export const movieDetail = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const movie = await Movie.findOne( { _id: id} );
+        return res.render("detail", { movie });
+    } catch (e) {
+        return res.render("detail", { err: e.message });
+    }
+};
+
+/*
+export const getEdit = (req, res) => {
+    return res.end();
+}
+
+export const postEdit = (req, res) => {
+    return res.end();
+}
+
+export const movieDelete = (req, res) => {
+    return res.end();
+}
+*/
