@@ -1,12 +1,13 @@
-const movies = [
-    {
-        title: "Mermaid",
-        rank: 1,
-    },
-    {
-        title: "Netflix Special",
-        rank: 10,
-    },
-]
+import mongoose from "mongoose";
 
-export const showMovies = () => movies;
+const MovieSchema = new mongoose.Schema({
+  name: String,
+  summary: String,
+  year: Number,
+  rating: Number,
+  genres: String,
+});
+
+const Movie = mongoose.model("Movie", MovieSchema);
+
+export default Movie;
