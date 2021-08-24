@@ -1,6 +1,9 @@
 extends templates/layout
 
 block content
+  if err
+    p=err
+    
   form(method="POST")
     input(placeholder="Username", name="username", type="text", required)
     input(placeholder="Password", name="password", type="password", required)

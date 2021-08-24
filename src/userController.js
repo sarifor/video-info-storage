@@ -41,11 +41,37 @@ export const postJoin = async (req, res) => {
 };
 
 export const getLogin = (req, res) => {
-
+    return res.render("login");
 };
 
 export const postLogin = async (req, res) => {
+    //req.body에서 username과 password를 확보하여, 
+    const { username, password } = req.body;
 
+    // username이 DB에 있나 보고, password가 해당 유저의 것과 일치하나 보고,
+    try {
+        const user = await User.findOne({ username: username });
+        if (!user) {
+            return res.render("login", { err: "username does not exist" });
+        };
+
+        if (user.password !== password) {
+            return res.render("login", { err: "password does not match!" });
+        };
+
+        res.locals.loggedInUser = user;
+        res.locals.loggedIn = true;
+
+        console.log("userController.js");
+        console.log(res.locals.loggedInUser);
+        console.log(res.locals.loggedIn);
+
+        return res.render("home");
+
+    } catch (e) {
+        return res.render("login", { err: e.message });
+    }
+    // (문제 없으면) res.locals에 user정보와 login여부 추가하고, home.pug로 return
 };
 
 export const logout = (req, res) => {
