@@ -62,9 +62,9 @@ export const postLogin = async (req, res) => {
         req.session.user = user; // res.session은 이상한가?
         res.locals.loggedIn = true;
         
-        console.log("userController.js");
-        console.log(req.session.user);
-        console.log(res.locals.loggedIn);
+        // console.log("userController.js");
+        // console.log(req.session.user);
+        // console.log(res.locals.loggedIn);
 
         return res.render("home");
 
