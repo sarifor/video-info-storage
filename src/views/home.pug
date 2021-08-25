@@ -1,4 +1,6 @@
 extends templates/layout
 
 block content
-    p="home!"
+  if err
+    p=err
+  p="home!"

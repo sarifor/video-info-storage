@@ -66,7 +66,31 @@ export const postLogin = async (req, res) => {
     } catch (e) {
         return res.render("login", { err: e.message });
     }
-    // (문제 없으면) res.locals에 user정보와 login여부 추가하고, home.pug로 return
+};
+
+export const getEdit = async (req, res) => {
+    // session에 있는 user 정보가 USER DB에 있다면, 해당 user의 정보를 edit.pug로 render (try/catch)
+    try {
+        const { username } = req.session.user;
+        console.log(username);
+    } catch (e) {
+        console.log(e.message);
+        return res.render("home", { err: "please login first" });
+    }
+    
+    try {
+        const user = await User.findOne({ username: username }); // username is not defined: 왜 req.session.user에서 꺼내온 username을 인식 못 하지? 
+    } catch (e) {
+        return res.render("home", { err: e.message });
+    }
+
+    // console.log(user);
+    // return res.render("edit", user)
+};
+
+export const postEdit = (req, res) => {
+    // session에 있는 user 정보가 USER DB에 있다면, req.body에 담긴 정보를 업뎃하고, home으로 render (try/catch)
+
 };
 
 export const logout = (req, res) => {
