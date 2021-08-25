@@ -59,13 +59,9 @@ export const postLogin = async (req, res) => {
             return res.render("login", { err: "password does not match!" });
         };
 
-        req.session.user = user; // res.session은 이상한가?
-        res.locals.loggedIn = true;
+        req.session.user = user;
+        req.session.loggedIn = true;
         
-        console.log("userController.js");
-        console.log(req.session.user);
-        console.log(res.locals.loggedIn);
-
         return res.render("home");
 
     } catch (e) {
