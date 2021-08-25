@@ -70,16 +70,17 @@ export const postLogin = async (req, res) => {
 
 export const getEdit = async (req, res) => {
     // session에 있는 user 정보가 USER DB에 있다면, 해당 user의 정보를 edit.pug로 render (try/catch)
-    try {
-        const { username } = req.session.user;
-        console.log(username);
-    } catch (e) {
-        console.log(e.message);
-        return res.render("home", { err: "please login first" });
-    }
+
     
     try {
-        const user = await User.findOne({ username: username }); // username is not defined: 왜 req.session.user에서 꺼내온 username을 인식 못 하지? 
+        const { username } = req.session.user;
+
+        if (!username) {
+            return res.render("home", { err: "please login first" });
+        }
+
+        const user = await User.findOne({ username });
+        return res.render("edit", { user });
     } catch (e) {
         return res.render("home", { err: e.message });
     }
