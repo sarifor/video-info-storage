@@ -61,7 +61,6 @@ export const postLogin = async (req, res) => {
 
         req.session.user = user;
         req.session.loggedIn = true;
-        
         return res.render("home");
 
     } catch (e) {
