@@ -89,9 +89,22 @@ export const getEdit = async (req, res) => {
     // return res.render("edit", user)
 };
 
-export const postEdit = (req, res) => {
+export const postEdit = async (req, res) => {
     // session에 있는 user 정보가 USER DB에 있다면, req.body에 담긴 정보를 업뎃하고, home으로 render (try/catch)
-
+    try {
+        const { name, username, password } = req.body;
+        await User.findOneAndUpdate(
+            { username },
+            {
+                name,
+                username,
+                password
+            }, 
+            { new: true });
+        return res.redirect("/");
+    } catch (e) {
+        return res.render("home", { err: e.message });
+    };
 };
 
 export const logout = (req, res) => {
