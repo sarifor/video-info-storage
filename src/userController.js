@@ -61,7 +61,7 @@ export const postLogin = async (req, res) => {
 
         req.session.user = user;
         req.session.loggedIn = true;
-        return res.render("home");
+        return res.redirect("/"); 
 
     } catch (e) {
         return res.render("login", { err: e.message });
@@ -108,5 +108,6 @@ export const postEdit = async (req, res) => {
 };
 
 export const logout = (req, res) => {
-
+    req.session.destroy();
+    return res.redirect("/");
 };
