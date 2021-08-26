@@ -6,7 +6,7 @@ block content
 
     if videos
         each video in videos
-            p=a(href=`/videos/${video._id}`)video.title
-                //Syntax Error: Unexpected token
+            p
+                a(href=`/videos/${video._id}`)=video.title
 
     p="home!"
