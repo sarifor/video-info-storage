@@ -23,3 +23,12 @@ export const postUpload = async (req, res) => {
         return res.render("upload", { err: e.message });
     }
 };
+
+export const getWatch = (req, res) => {
+    // req.params에서 받은 아이디를 Video DB에서 조회하여, watch.pug로 render
+    res.render("watch", { video });
+};
+
+export const postWatch = (req, res) => {
+    //
+};
