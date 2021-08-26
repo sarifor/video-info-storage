@@ -23,7 +23,7 @@ export const postUpload = async (req, res) => {
     }
 
     try {
-        const video = await Video.create({
+        await Video.create({
             title,
             desc,
             tags: tags.split(","),

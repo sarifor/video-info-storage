@@ -10,8 +10,8 @@ block content
             li=video.desc
             li=video.tags
             li=video.owner.username
-    if LoggedUser
-        if LoggedUser.username === video.owner.username
+    if loggedUser
+        if loggedUser.username === video.owner.username
             a(href=`/videos/${video._id}/edit`)="Edit Video"
         else
             p="You are not the owner of this video"
