@@ -3,7 +3,8 @@ import {
   getUpload,
   postUpload,
   getWatch,
-  postWatch
+  getEditVideo,
+  postEditVideo
 } from "./videoController";
 
 import {
@@ -13,7 +14,8 @@ import {
 const videoRouter = express.Router();
 
 videoRouter.get("/", home);
-videoRouter.route("/:id").get(getWatch).post(postWatch);
+videoRouter.get("/:id", getWatch);
 videoRouter.route("/upload").get(getUpload).post(postUpload);
+videoRouter.route("/:id/edit").get(getEditVideo).post(postEditVideo);
 
 export default videoRouter;

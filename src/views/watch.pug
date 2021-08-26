@@ -8,4 +8,6 @@ block content
         ul
             li=video.title
             li=video.desc
-            li=video.tags 
+            li=video.tags
+        ul
+            a(href=`/videos/${video._id}/edit`)="Edit Video"

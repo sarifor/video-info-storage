@@ -35,6 +35,16 @@ export const getWatch = async (req, res) => {
     }
 };
 
-export const postWatch = (req, res) => {
-    //
+export const getEditVideo = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const video = await Video.findOne({_id: id});
+        return res.render("editVideo", { video });
+    } catch (e) {
+        return res.render("watch", { err: e.message });
+    }
+};
+
+export const postEditVideo = (req, res) => {
+    console.log("postEditVideo!");
 };
