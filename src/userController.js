@@ -7,8 +7,11 @@ import Video from "./models/Video";
 export const home = async (req, res) => {
     try {
         const videos = await Video.find({});
-        console.log(videos);
-        return res.render("home", { videos });
+        if (Object.keys(videos).length === 0) {
+            return res.render("home", { err: "Please add new video" });
+        } else {
+            return res.render("home", { videos });
+        }
     } catch (e) {
         return res.render("home", { err: e.message });
     }
