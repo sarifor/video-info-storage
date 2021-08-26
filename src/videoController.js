@@ -9,14 +9,26 @@ export const getUpload = (req, res) => {
 };
 
 export const postUpload = async (req, res) => {
-    // req.body에서 값 꺼내어, Video DB에 저장하고, home return
+    // req.body에서 값 꺼내어, Video DB에 저장하고, 
+    // session에서 user 정보 꺼내어, Videos.owner에 저장하고, home return
     const {title, desc, tags} = req.body;
+    let { _id } = req.session.user;
+    console.log("From Session", _id);
+    let user = [];
+
+    try {
+        user = await User.findOne({ _id: _id.toString() });
+        console.log("In postUpload", user);
+    } catch (e) {
+        return res.render("home", { err: e.message });
+    }
 
     try {
         await Video.create({
             title,
             desc,
             tags: tags.split(","),
+            owner: user._id
         });
         return res.redirect("/");
     } catch (e) {

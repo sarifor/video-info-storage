@@ -9,5 +9,5 @@ block content
             li=video.title
             li=video.desc
             li=video.tags
-        ul
+    if user.username === video.owner
             a(href=`/videos/${video._id}/edit`)="Edit Video"
