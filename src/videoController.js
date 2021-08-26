@@ -45,6 +45,23 @@ export const getEditVideo = async (req, res) => {
     }
 };
 
-export const postEditVideo = (req, res) => {
-    console.log("postEditVideo!");
+export const postEditVideo = async (req, res) => {
+    // req.params.id로 Video를 찾아, req.body의 값을 Video에 업뎃하고, home으로 render
+    const { title, desc, tags } = req.body;
+    const { id } = req.params;
+    let video = [];
+    
+    try {
+        video = await Video.findOneAndUpdate(
+            { _id: id},
+            { title, desc, tags },
+            { new: true }
+        );    
+        if (!video) {
+            return res.render("editVideo", { err: "video does not exist" });
+        };
+        return res.redirect("/"); 
+    } catch (e) {
+        return res.render("editVideo", { err: e.message });
+    }
 };

@@ -5,4 +5,8 @@ block content
         p=err
 
     if video
-        p=video.title
+        form(method="POST")
+            input(type="text", name="title", value=video.title)
+            input(type="text", name="desc", value=video.desc)
+            input(type="text", name="tags", value=video.tags)
+            input(type="submit", value="Edit")
