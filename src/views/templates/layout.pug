@@ -18,12 +18,14 @@ html(lang="en")
             a(href="/join") Join
           li
             a(href="/login") Login
-        if loggedIn
+        if loggedIn     
           li
             a(href="/edit") Edit Profile
           li
             a(href="/videos/upload") Upload Video
           li
             a(href="/logout") Logout
+          li
+            p=`| Hi! ${LoggedUser.username} ^^`             
     main
       block content

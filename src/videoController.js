@@ -39,7 +39,8 @@ export const getWatch = async (req, res) => {
     // req.params에서 받은 아이디를 Video DB에서 조회하여, watch.pug로 render
     const { id } = req.params;
     try {
-        const video = await Video.findOne({_id: id});
+        const video = await Video.findOne({_id: id}).populate('owner');
+        console.log(video.owner.username);
         return res.render("watch", { video });
     } catch (e) {
         return res.render("home", { err: e.message });
