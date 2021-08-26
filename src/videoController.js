@@ -16,8 +16,8 @@ export const postUpload = async (req, res) => {
         await Video.create({
             title,
             desc,
-            tags,
-        })
+            tags: tags.split(","),
+        });
         return res.redirect("/");
     } catch (e) {
         return res.render("upload", { err: e.message });
@@ -54,7 +54,11 @@ export const postEditVideo = async (req, res) => {
     try {
         video = await Video.findOneAndUpdate(
             { _id: id},
-            { title, desc, tags },
+            { 
+                title, 
+                desc, 
+                tags: tags.split(","),
+            },
             { new: true }
         );    
         if (!video) {
