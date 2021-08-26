@@ -1,0 +1,11 @@
+extends templates/layout
+
+block content
+  if err
+    p=err
+
+  form(method="POST")
+    input(placeholder="Title", name="title", type="text", value="", required)
+    input(placeholder="Description", name="desc", type="text", value="", required)
+    input(placeholder="Tags", name="tags", type="text", value="")
+    input(type="submit", value="Upload")

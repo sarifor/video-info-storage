@@ -1,6 +1,13 @@
 extends templates/layout
 
 block content
-  if err
-    p=err
-  p="home!"
+    if err
+        p=err
+
+    if videos
+        each video in videos
+            p=video.title
+    else if (Object.keys(videos).length === 0)
+        p="Please add new video"
+
+    p="home!"
