@@ -1,0 +1,11 @@
+extends templates/layout
+
+block content
+    if err
+        p=err
+
+    if video
+        ul
+            li=video.title
+            li=video.desc
+            li=video.tags 
