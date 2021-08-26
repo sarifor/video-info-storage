@@ -12,18 +12,18 @@ export const getUpload = (req, res) => {
 export const postUpload = async (req, res) => {
     // req.body에서 값 꺼내어, Video DB에 저장하고, 
     // session에서 user 정보 꺼내어, Videos.owner에 저장하고, home return
-    const {title, desc, tags} = req.body;
+    const { title, desc, tags } = req.body;
     let { _id } = req.session.user;
-    let user = [];
+    let user;
 
-    try {      
+    try {
         user = await User.findById(_id);
     } catch (e) {
         return res.render("home", { err: e.message });
     }
 
     try {
-        await Video.create({
+        const video = await Video.create({
             title,
             desc,
             tags: tags.split(","),
@@ -39,8 +39,7 @@ export const getWatch = async (req, res) => {
     // req.params에서 받은 아이디를 Video DB에서 조회하여, watch.pug로 render
     const { id } = req.params;
     try {
-        const video = await Video.findOne({_id: id}).populate('owner');
-        console.log(video.owner.username);
+        const video = await Video.findById(id).populate('owner');
         return res.render("watch", { video });
     } catch (e) {
         return res.render("home", { err: e.message });
