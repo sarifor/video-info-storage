@@ -1,4 +1,5 @@
 import Video from "./models/Video";
+import User from "./models/User";
 
 export const getUpload = (req, res) => {
     try {
@@ -13,12 +14,10 @@ export const postUpload = async (req, res) => {
     // session에서 user 정보 꺼내어, Videos.owner에 저장하고, home return
     const {title, desc, tags} = req.body;
     let { _id } = req.session.user;
-    console.log("From Session", _id);
     let user = [];
 
-    try {
-        user = await User.findOne({ _id: _id.toString() });
-        console.log("In postUpload", user);
+    try {      
+        user = await User.findById(_id);
     } catch (e) {
         return res.render("home", { err: e.message });
     }
