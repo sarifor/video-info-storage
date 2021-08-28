@@ -7,6 +7,7 @@ import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import session from "express-session";
+import { Testimport } from "./Testimport";
 import userRouter from "./userRouter";
 import videoRouter from "./videoRouter";
 
@@ -48,6 +49,7 @@ app.get("/add-one", (req, res, next) => {
 */
 
 app.use(localsMiddleware);
+app.use(Testimport);
 app.use("/", userRouter);
 app.use("/videos", videoRouter);
 
