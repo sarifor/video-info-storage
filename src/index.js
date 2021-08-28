@@ -1,6 +1,6 @@
 import "regenerator-runtime";
 
-import "./db"; // test
+import "./db";
 import "./models/User";
 
 import express from "express";
