@@ -1,4 +1,4 @@
-import User from "./models/User";
+import User from "./models/User"; // test
 import Video from "./models/Video";
 
 // import bcrypt from "bcrypt";
