@@ -1,3 +1,5 @@
+import "regenerator-runtime";
+
 import "./db"; // test
 import "./models/User";
 
