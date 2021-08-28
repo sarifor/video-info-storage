@@ -18,4 +18,4 @@ userRouter.route("/login").get(getLogin).post(postLogin);
 userRouter.route("/edit").get(getEdit).post(postEdit);
 userRouter.get("/logout", logout);
 
-export default UserRouter;
+export default userRouter;

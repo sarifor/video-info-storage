@@ -7,7 +7,7 @@ import express from "express";
 import path from "path";
 import bodyParser from "body-parser";
 import session from "express-session";
-import userRouter from "./UserRouter";
+import userRouter from "./userRouter";
 import videoRouter from "./videoRouter";
 
 import { localsMiddleware } from "./middlewares";

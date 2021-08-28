@@ -18,5 +18,5 @@ userRouter.route("/join").get(_userController.getJoin).post(_userController.post
 userRouter.route("/login").get(_userController.getLogin).post(_userController.postLogin);
 userRouter.route("/edit").get(_userController.getEdit).post(_userController.postEdit);
 userRouter.get("/logout", _userController.logout);
-var _default = userRouter;
+var _default = UserRouter;
 exports["default"] = _default;
