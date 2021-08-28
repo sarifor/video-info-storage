@@ -1,7 +1,10 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import mongoose from "mongoose";
 
 mongoose.connect(
-  "mongodb://127.0.0.1:27017/demo",
+  process.env.DB_URL,
   {
     useNewUrlParser: true,
     useFindAndModify: false,

@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import "regenerator-runtime";
 
 import "./db";
