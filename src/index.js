@@ -1,4 +1,4 @@
-// import "./db"; // test
+import "./db"; // test
 import "./models/User";
 
 import express from "express";
@@ -11,7 +11,7 @@ import videoRouter from "./videoRouter";
 import { localsMiddleware } from "./middlewares";
 
 const app = express();
-const PORT = 4040;
+const PORT = process.env.PORT || 3000;
 
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
