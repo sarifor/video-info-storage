@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "node build/index.js"
+    "start": "babel src -d build && node build/index.js"
   },
   "dependencies": {
     "@babel/cli": "^7.14.8",
