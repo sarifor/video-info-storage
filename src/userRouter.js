@@ -8,7 +8,7 @@ import {
   logout,
   getEdit,
   postEdit
-} from "userController";
+} from "./userController";
 
 const userRouter = express.Router();
 
