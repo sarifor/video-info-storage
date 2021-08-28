@@ -9,7 +9,7 @@ import {
 
 import {
   home,
-} from "./UserController";
+} from "./userController";
 
 const videoRouter = express.Router();
 

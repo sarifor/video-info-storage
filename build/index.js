@@ -14,7 +14,7 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _expressSession = _interopRequireDefault(require("express-session"));
 
-var _UserRouter = _interopRequireDefault(require("./UserRouter"));
+var _userRouter = _interopRequireDefault(require("./userRouter"));
 
 var _videoRouter = _interopRequireDefault(require("./videoRouter"));
 
@@ -56,7 +56,7 @@ app.get("/add-one", (req, res, next) => {
 */
 
 app.use(_middlewares.localsMiddleware);
-app.use("/", _UserRouter["default"]);
+app.use("/", _userRouter["default"]);
 app.use("/videos", _videoRouter["default"]);
 app.listen(PORT, function () {
   return console.log("\u2705  Server Ready!");
