@@ -10,4 +10,12 @@ module.exports = {
       filename: '[name].js',
       path: path.resolve(__dirname, 'assets'),
     },
+    modules: {
+      rules: [
+          {
+              test: /\.scss$/,
+              use: ['style-loader', 'css-loader', 'sass-loader'],    
+          }
+      ]
+    }    
   };
