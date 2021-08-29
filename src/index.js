@@ -53,5 +53,6 @@ app.get("/add-one", (req, res, next) => {
 app.use(localsMiddleware);
 app.use("/", userRouter);
 app.use("/videos", videoRouter);
+app.use("/static", express.static("client"));
 
 app.listen(PORT, () => console.log(`✅  Server Ready!`));

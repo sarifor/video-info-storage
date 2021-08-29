@@ -6,9 +6,14 @@ html(lang="en")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
     link(rel="stylesheet", href="https://unpkg.com/mvp.css@1.7.4/mvp.css")
     title #{pageTitle} | #{siteTitle}
+
+    link(rel="stylesheet", href="/static/test.css")
+    script(src="/static/test.js")
+
   body
     header
       h1=pageTitle
+      
     nav
       ul
         li
@@ -27,5 +32,9 @@ html(lang="en")
             a(href="/logout") Logout
           li
             p=`| Hi! ${loggedUser.username} ^^`             
+
     main
       block content
+    footer
+
+      
