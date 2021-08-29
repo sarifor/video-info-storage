@@ -3,14 +3,21 @@ dotenv.config();
 
 import mongoose from "mongoose";
 
-mongoose.connect(
-  process.env.DB_URL,
-  {
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true
+(async () => {
+  try {
+    await mongoose.connect(
+      process.env.DB_URL,
+      {
+        useNewUrlParser: true,
+        useFindAndModify: false,
+        useCreateIndex: true
+      }
+    );
+  } catch (err) {
+    return res.render("Home", { err: "DB not rendered" })
   }
-);
+})()
+
 
 const db = mongoose.connection;
 
