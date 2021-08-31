@@ -54,5 +54,6 @@ app.use(localsMiddleware);
 app.use("/", userRouter);
 app.use("/videos", videoRouter);
 app.use("/static", express.static("assets"));
+app.use("/uploads", express.static("uploads"));
 
 app.listen(PORT, () => console.log(`✅  Server Ready!`));
