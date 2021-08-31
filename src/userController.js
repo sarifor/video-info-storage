@@ -25,7 +25,7 @@ export const postJoin = async (req, res) => {
     const { name, username, password, password2 } = req.body;
     console.log(req.file);
 
-    const imageUrl = "/uploads/" + req.file.originalname;
+    const imageUrl = req.file.path;
     console.log(imageUrl);
 
     // name이 db에 이미 존재하는가, (존재하면 에러 메시지를 join.pug에 보냄)
