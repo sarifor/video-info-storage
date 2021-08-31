@@ -3,9 +3,6 @@ extends templates/layout
 block content
   if err
     p=err
-
-  if test
-    img(src=test)
     
   form(method="POST")
     input(placeholder="Username", name="username", type="text", required)

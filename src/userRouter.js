@@ -1,5 +1,4 @@
 import express from "express";
-import multer from "multer";
 import {
   home,
   getJoin,
@@ -10,9 +9,9 @@ import {
   getEdit,
   postEdit
 } from "./userController";
+import { upload } from "./middlewares";
 
 const userRouter = express.Router();
-const upload = multer({ dest: 'uploads/' });
 
 userRouter.get("/", home);
 userRouter.route("/join").get(getJoin).post(upload.single('photo'), postJoin);

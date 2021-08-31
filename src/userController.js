@@ -23,10 +23,8 @@ export const getJoin = (req, res) => {
 
 export const postJoin = async (req, res) => {
     const { name, username, password, password2 } = req.body;
-    console.log(req.file);
 
-    const imageUrl = req.file.path;
-    console.log(imageUrl);
+    const imageUrl = req.file.path;  // 좀 더 최신 JS답게 고치려면?
 
     // name이 db에 이미 존재하는가, (존재하면 에러 메시지를 join.pug에 보냄)
     const user = await User.findOne({ name: name });
@@ -46,8 +44,9 @@ export const postJoin = async (req, res) => {
             name,
             username,
             password,
+            profileUrl: imageUrl,
         })
-        return res.render("login", { test: imageUrl }); // 이때 다음 URL에 접속하면, http://localhost:3000/uploads/이미지명.jpg -> response headers에, Content-Type: text/html; charset=utf-8 라고 되어 있음.
+        return res.redirect("/login");
     } catch (e) {
         return res.render("join", { err: e.message });
     }

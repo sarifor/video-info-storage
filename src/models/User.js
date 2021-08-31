@@ -13,7 +13,10 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    profileUrl: {
+        type: String,   
+    },
 });
 
 const model = mongoose.model("User", UserSchema, "User");
