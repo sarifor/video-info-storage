@@ -23,8 +23,7 @@ export const getJoin = (req, res) => {
 
 export const postJoin = async (req, res) => {
     const { name, username, password, password2 } = req.body;
-
-    const imageUrl = req.file.path;  // 좀 더 최신 JS답게 고치려면?
+    const imageUrl = req.file.location;
 
     // name이 db에 이미 존재하는가, (존재하면 에러 메시지를 join.pug에 보냄)
     const user = await User.findOne({ name: name });
