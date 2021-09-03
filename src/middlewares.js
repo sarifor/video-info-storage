@@ -19,5 +19,6 @@ export const upload = multer({
     storage: multerS3({
         s3: s3,
         bucket: "stforme210903",
+        acl: "public-read",        
     })
 });
