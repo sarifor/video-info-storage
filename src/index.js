@@ -24,7 +24,11 @@ app.set("views", path.join(process.cwd(), "/src/views"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "Hello!",
+    name: "cookie from my app",
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+      httpOnly: true,
+    },
     resave: true,
     saveUninitialized: true
   })
