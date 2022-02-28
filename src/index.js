@@ -1,4 +1,4 @@
-import dotenv from "dotenv"; // test heroku
+import dotenv from "dotenv"; // test heroku!
 dotenv.config();
 
 import "regenerator-runtime";
