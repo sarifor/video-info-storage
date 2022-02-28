@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "npm run dev:assets & npm run dev:start",
+    "start": "npm run dev:assets & npm run dev:server",
     "dev:start": "nodemon --exec babel-node src/index.js",
     "dev:assets": "webpack",
     "dev:server": "babel src -d build && node build/index.js"
