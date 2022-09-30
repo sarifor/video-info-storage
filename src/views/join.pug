@@ -1,13 +1,39 @@
 extends templates/layout
 
 block content
-  if err
-    p=err
+  main(style="user-select: auto;")
 
-  form(method="POST" enctype="multipart/form-data")
-    input(placeholder="Name", name="name", type="text", required)
-    input(placeholder="Username", name="username", type="text", required)
-    input(placeholder="Password", name="password", type="password", required)
-    input(placeholder="Confirm Password", name="password2", type="password", required)
-    input(type='file' name='photo' accept="image/*")
-    input(type="submit", value="Join")
+    if err
+    p=err
+              
+    form(class="needs-validation" novalidate="" style="user-select: auto;" method="POST" enctype="multipart/form-data")
+      div(class="row g-3" style="user-select: auto;")
+        
+        div(class="col-12" style="user-select: auto;")
+          label(for="name" class="form-label" style="user-select: auto;")="Name"
+          input(type="text" class="form-control" name="name" value="" placeholder="Name" style="user-select: auto;", required)
+
+        div(class="col-12" style="user-select: auto;")
+          label(for="username" class="form-label" style="user-select: auto;")="User Name"
+          input(type="text" class="form-control" name="username" value="" placeholder="User Name" style="user-select: auto;", required)
+
+        div(class="col-12" style="user-select: auto;")
+          label(for="password" class="form-label" style="user-select: auto;")="Password"
+          input(type="password" class="form-control" name="password" value="" placeholder="Password" style="user-select: auto;", required)
+
+        div(class="col-12" style="user-select: auto;")
+          label(for="password2" class="form-label" style="user-select: auto;")="Comfirm Password"
+          input(type="password" class="form-control" name="password2" value="" placeholder="Confirm Password" style="user-select: auto;", required)
+
+        div(class="col-12" style="user-select: auto;")
+          label(for="photo" class="form-label" style="user-select: auto;")="Photo"
+          input(type="file" class="form-control" name="photo" accept="image/*")
+
+      hr(class="my-4" style="user-select: auto;")
+
+      button(class="w-100 btn btn-primary btn-lg" type="submit" style="user-select: auto;")="Join"
+
+
+
+
+

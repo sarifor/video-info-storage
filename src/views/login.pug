@@ -1,10 +1,22 @@
 extends templates/layout
 
 block content
-  if err
-    p=err
-    
-  form(method="POST")
-    input(placeholder="Username", name="username", type="text", required)
-    input(placeholder="Password", name="password", type="password", required)
-    input(type="submit", value="Login")
+  main(class="form-signin w-100 m-auto text-center" cz-shortcut-listen="true" style="user-select: auto;")
+    if err
+      p=err
+
+    form(method="POST" style="user-select: auto;")
+      h1(class="h3 mb-3 fw-normal" style="user-select: auto;")="Please sign in"
+
+      div(class="form-floating" style="user-select: auto;")
+        input(type="text" class="form-control" name="username" placeholder="some value" style="user-select: auto;", required)
+        label(for="floatingInput" style="user-select: auto;")="User Name"
+
+      div(class="form-floating" style="user-select: auto;")
+        input(type="password" class="form-control" name="password" placeholder="some value" style="user-select: auto;", required)
+        label(for="floatingPassword" style="user-select: auto;")="Password"
+      
+      button(class="w-100 btn btn-lg btn-primary" type="submit" style="user-select: auto;")="Login"
+
+
+      

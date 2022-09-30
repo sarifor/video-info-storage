@@ -1,12 +1,17 @@
 extends templates/layout
 
 block content
-    if err
-        p=err
+    main(class="container" style="user-select: auto;")
+        if err
+            p=err
 
-    if videos
-        each video in videos
-            p
-                a(href=`/videos/${video._id}`)=video.title
+        if videos
+            div(class="row mb-2" style="user-select: auto;")
 
-    p="home!"
+                each video in videos
+                    div(class="col-md-6" style="user-select: auto;")
+                        div(class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="user-select: auto;")
+                            div(class="col p-4 d-flex flex-column position-static" style="user-select: auto;")
+                                h3(class="mb-0" style="user-select: auto;")=video.title
+                                p(class="card-text mb-auto" style="user-select: auto;")=video.desc
+                                a(href=`/videos/${video._id}` class="stretched-link" style="user-select: auto;")="See details"
