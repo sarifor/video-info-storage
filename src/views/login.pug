@@ -1,22 +1,21 @@
 extends templates/layout
 
 block content
-  main(class="form-signin w-100 m-auto text-center" cz-shortcut-listen="true" style="user-select: auto;")
-    if err
-      p=err
+  div(class="text-center")
+    div(class="form-signin w-100 m-auto")
 
-    form(method="POST" style="user-select: auto;")
-      h1(class="h3 mb-3 fw-normal" style="user-select: auto;")="Please sign in"
+      if err
+        p=err
 
-      div(class="form-floating" style="user-select: auto;")
-        input(type="text" class="form-control" name="username" placeholder="some value" style="user-select: auto;", required)
-        label(for="floatingInput" style="user-select: auto;")="User Name"
+      form(method="POST")
+        h1(class="h3 mb-3 fw-normal")="Please sign in"
 
-      div(class="form-floating" style="user-select: auto;")
-        input(type="password" class="form-control" name="password" placeholder="some value" style="user-select: auto;", required)
-        label(for="floatingPassword" style="user-select: auto;")="Password"
-      
-      button(class="w-100 btn btn-lg btn-primary" type="submit" style="user-select: auto;")="Login"
+        div(class="form-floating")
+          input(type="text" class="form-control" name="username" placeholder="some value", required)
+          label(for="floatingInput")="User Name"
 
-
-      
+        div(class="form-floating")
+          input(type="password" class="form-control" name="password" placeholder="some value", required)
+          label(for="floatingPassword")="Password"
+        
+        button(class="w-100 btn btn-lg btn-primary" type="submit")="Login"
