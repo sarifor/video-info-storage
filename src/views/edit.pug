@@ -1,10 +1,10 @@
 extends templates/layout
 
 block content
-  main(style="user-select: auto;")
-
-    if err
-    p=err
+  div(class="commonform")
+    div(class="" style="user-select: auto;")
+      if err
+        p=err
 
     form(class="needs-validation" novalidate="" style="user-select: auto;" method="POST")
       div(class="row g-3" style="user-select: auto;")
