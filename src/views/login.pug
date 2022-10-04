@@ -1,7 +1,7 @@
 extends templates/layout
 
 block content
-  div(class="text-center")
+  div(class="login text-center")
     div(class="form-signin w-100 m-auto")
 
       if err
@@ -14,7 +14,7 @@ block content
           input(type="text" class="form-control" name="username" placeholder="some value", required)
           label(for="floatingInput")="User Name"
 
-        div(class="form-floating")
+        div(class="form-floating mb-3")
           input(type="password" class="form-control" name="password" placeholder="some value", required)
           label(for="floatingPassword")="Password"
         
