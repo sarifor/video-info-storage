@@ -1,26 +1,28 @@
 extends templates/layout
 
 block content
-    main(class="container" style="user-select: auto;")
-        if err
-            p=err
-
-        if video
-            article(class="blog-post" style="user-select: auto;")
-                h2(class="blog-post-title mb-1" style="user-select: auto;")=video.title
-                hr(style="user-select: auto;")
-                h3(style="user-select: auto;")="Description"
-                p(style="user-select: auto;")=video.desc
-                h3(style="user-select: auto;")="Tags"
-                p(style="user-select: auto;")=video.tags
-                h3(style="user-select: auto;")="Owner"
-                p(style="user-select: auto;")=video.owner.username
+  div(class="")
+    div(class="" style="user-select: auto;")
+      if err
+        p=err
                 
-        // If Login user is identical to the owner, show edit button. If not, no action.
-        if loggedUser
-            if loggedUser.username === video.owner.username
-                a(class="btn btn-sm btn-outline-secondary" href=`/videos/${video._id}/edit` style="user-select: auto;")="Edit Video"
-            else
-                //
-        else
-            //
+      div(class="" style="user-select: auto;")
+          if video
+              article(class="blog-post" style="user-select: auto;")
+                  h2(class="blog-post-title mb-1" style="user-select: auto;")=video.title
+                  hr(style="user-select: auto;")
+                  h3(style="user-select: auto;")="Description"
+                  p(style="user-select: auto;")=video.desc
+                  h3(style="user-select: auto;")="Tags"
+                  p(style="user-select: auto;")=video.tags
+                  h3(style="user-select: auto;")="Owner"
+                  p(style="user-select: auto;")=video.owner.username
+                    
+          // If Login user is identical to the owner, show edit button. If not, no action.
+          if loggedUser
+              if loggedUser.username === video.owner.username
+                  a(class="btn btn-sm btn-outline-secondary" href=`/videos/${video._id}/edit` style="user-select: auto;")="Edit Video"
+              else
+                  //
+          else
+              //
