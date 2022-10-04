@@ -1,26 +1,27 @@
 extends templates/layout
 
 block content
-  main(style="user-select: auto;")
-
-    if err
-    p=err
+  div(class="upload")
+    div(class="row g-5" style="user-select: auto;")
+      div(class="col-md-7 col-lg-8" style="user-select: auto;")
+        if err
+          p=err
               
-    form(class="needs-validation" novalidate="" style="user-select: auto;" method="POST")
-      div(class="row g-3" style="user-select: auto;")
+        form(class="needs-validation" novalidate="" style="user-select: auto;" method="POST")
+          div(class="row g-3" style="user-select: auto;")
         
-        div(class="col-12" style="user-select: auto;")
-          label(for="title" class="form-label" style="user-select: auto;")="Title"
-          input(type="text" class="form-control" name="title" value="" placeholder="Top Gun" style="user-select: auto;", required)
+            div(class="col-12" style="user-select: auto;")
+              label(for="title" class="form-label" style="user-select: auto;")="Title"
+              input(type="text" class="form-control" name="title" value="" placeholder="Top Gun" style="user-select: auto;", required)
 
-        div(class="col-12" style="user-select: auto;")
-          label(for="desc" class="form-label" style="user-select: auto;")="Description"
-          input(type="text" class="form-control" name="desc" value="" placeholder="Cooool" style="user-select: auto;", required)
+            div(class="col-12" style="user-select: auto;")
+              label(for="desc" class="form-label" style="user-select: auto;")="Description"
+              input(type="text" class="form-control" name="desc" value="" placeholder="Cooool" style="user-select: auto;", required)
 
-        div(class="col-12" style="user-select: auto;")
-          label(for="tags" class="form-label" style="user-select: auto;")="Tags"
-          input(type="text" class="form-control" name="tags" value="" placeholder="Tom Cruise, movie, world record" style="user-select: auto;")
+            div(class="col-12" style="user-select: auto;")
+              label(for="tags" class="form-label" style="user-select: auto;")="Tags"
+              input(type="text" class="form-control" name="tags" value="" placeholder="Tom Cruise, movie, world record" style="user-select: auto;")
 
-      hr(class="my-4" style="user-select: auto;")
+          hr(class="my-4" style="user-select: auto;")
 
-      button(class="w-100 btn btn-primary btn-lg" type="submit" style="user-select: auto;")="Upload"
+          button(class="w-100 btn btn-primary btn-lg" type="submit" style="user-select: auto;")="Upload"

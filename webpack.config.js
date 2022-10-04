@@ -5,6 +5,7 @@ module.exports = {
     mode: 'development',    
     entry: {
       login: ['./src/client/login.scss'],
+      upload: ['./src/client/upload.scss'],
     },
     output: {
       filename: '[name].js',
