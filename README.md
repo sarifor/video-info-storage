@@ -1,5 +1,21 @@
 # Video Storage Info
 좋아하는 영상의 정보를 올려서 다른 사용자들과 공유하는 사이트입니다.
+https://aqueous-crag-80315.herokuapp.com/
+
+## Features
+- 회원가입
+- 로그인/로그아웃
+- 유저 프로필 수정
+- 영상 정보 업로드
+- 영상 정보 상세보기
+- 영상 정보 수정
+- 업로드된 모든 영상 정보 조회
+
+## Component Diagram
+![image](./component_diagram.png)
+
+## DB ERD
+(추후 보충)
 
 ## Getting Started
 로컬 컴퓨터에서 Visual Studio Code로 프로젝트를 실행하는 방법에 대해 설명하겠습니다.
@@ -24,8 +40,8 @@
 > 8. http://localhost:3000에 접속하여, 상단에 Video Storage Info라고 써 있는 화면이 뜨면 성공!
 >    - 「すべてのパブリックネットワークとプライベートネットワークで、Windowsファイアウォールにより[パッケージ名]の機能のいくつかがブロックされています」のようなアラートが出たら、「プライベートネットワーク」にチェックを入れ「アクセスを許可する」をクリック
 > 9. 환경변수를 사용하려면, db.js의 process.env.DB_URL과 index.js의 process.env.SESSION_SECRET의 코멘트아웃을 해제하고, .env_draft를 .env로 이름 변경 후 각 변수에 본인이 쓰는 값을 할당.
->    - AWS_ID = s3에 접속하기 위한 Amazon AWS Access Key 할당
->    - AWS_SECRET = s3에 접속하기 위한 Amazon AWS Secret key 할당
+>    - AWS_ID = S3에 접속하기 위한 Amazon AWS Access Key 할당
+>    - AWS_SECRET = S3에 접속하기 위한 Amazon AWS Secret key 할당
 >    - DB_URL = MongoDB Atlas URL 할당
 >    - NODE_MODULES_CACHE = false // 수정 불필요
 >    - NPM_CONFIG_PRODUCTION = false // 수정 불필요
@@ -38,16 +54,19 @@
 
 
 ## Built With
-* [Express]() - 웹 프레임워크
-* [NPM]() - 의존성 관리
+* Back-end
+  * Node.js
+  * express
+  * mongoDB Atlas
+* Front-end
+  * html, pug
+  * css, sass
 
 ## Versioning
 버전 관리법으로 [SemVer](http://semver.org/)을 사용하고 있습니다.
 
-## Authors
-
-* **Sarifor** - 프로젝트 구성, 구현, 트러블슈팅, 구현
+## Author
+**Sarifor** - 프로젝트 구성, 구현, 트러블슈팅, 배포
 
 ## License
-
 이 프로젝트는 MIT 라이센스를 준수합니다.
