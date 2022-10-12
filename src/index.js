@@ -25,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   session({
     name: "cookie from my app",
-    secret: process.env.SESSION_SECRET,
+    secret: "temp", // process.env.SESSION_SECRET,
     cookie: {
       httpOnly: true,
     },
@@ -60,4 +60,4 @@ app.use("/videos", videoRouter);
 app.use("/static", express.static("assets"));
 app.use("/uploads", express.static("uploads"));
 
-app.listen(PORT, () => console.log(`✅  Server Ready!`));
+app.listen(PORT, () => console.log(` http://localhost:${PORT}`));

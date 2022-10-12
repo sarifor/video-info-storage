@@ -14,7 +14,7 @@ import mongoose from "mongoose";
       }
     );
   } catch (err) {
-    return res.render("Home", { err: "DB not rendered" })
+    console.log("DB Not Connected")
   }
 })()
 

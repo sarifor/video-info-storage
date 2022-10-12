@@ -13,7 +13,21 @@ export const home = async (req, res) => {
             return res.render("home", { videos });
         }
     } catch (e) {
-        return res.render("home", { err: e.message });
+        const videos = [
+            {
+              _id: 1,
+              title: "temp 1",
+              desc: "temp 1",
+            },
+            {
+              _id: 2,
+              title: "temp 2",
+              desc: "temp 2",        
+            },
+          ];
+
+        return res.render("home", { videos });        
+        // return res.render("home", { err: e.message });
     }
 };
 
