@@ -36,7 +36,7 @@
   "devDependencies": {
     "css-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.2.0",
-    "nodemon": "1.18.4",
+    "nodemon": "2.0.20",
     "sass-loader": "^12.1.0",
     "style-loader": "^3.2.1",
     "webpack": "^5.51.1",
