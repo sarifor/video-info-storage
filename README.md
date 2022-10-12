@@ -1,87 +1,46 @@
 # Video Storage Info
-
-One Paragraph of project description goes here
+좋아하는 영상의 정보를 올려서 다른 사용자들과 공유하는 사이트입니다.
 
 ## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+로컬 컴퓨터에서 Visual Studio Code로 프로젝트를 실행하는 방법에 대해 설명하겠습니다.
 
 ### Prerequisites
+먼저 프로젝트를 실행하기 위한 환경을 마련합니다.
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+> 1. [git 최신판](https://git-scm.com/download/win) 다운로드/설치
+> 2. [Visual Studio Code 최신판](https://code.visualstudio.com/#alt-downloads) 다운로드/설치
+> 3. [Node.js 16.14.0](https://nodejs.org/download/release/v16.14.0/) 다운로드/설치 
+> 4. Visual Studio Code를 실행하고, Ctrl + Shift + `로 터미널(git bash) 열어서, Git, Node.js, npm 설치 확인
+>     - git -v 
+>     - node -v
+>     - npm -v
 
 ### Installing
+환경이 마련되면, 깃허브에서 프로젝트를 다운로드하여, 프로젝트에 쓰이는 패키지를 설치하고 실행합니다.
 
-A step by step series of examples that tell you how to get a development env running
+> 5. git clone https://github.com/sarifor/video-info-storage.git
+> 6. cd 커맨드로 저장소 폴더 안에 들어가서 npm install 실행하여, package.json에 기술되어 있는 패키지 설치
+> 7. npm run dev:start로 프로젝트 실행
+> 8. http://localhost:3000에 접속하여, Header에 Video Storage Info라고 써 있는 화면이 뜨면 성공!
+>    - 「すべてのパブリックネットワークとプライベートネットワークで、Windowsファイアウォールにより[パッケージ名]の機能のいくつかがブロックされています」のようなアラートが出たら、「プライベートネットワーク」にチェックを入れ「アクセスを許可する」をクリック
+> 9. Git 커맨드를 사용하려면, cd 커맨드로 저장소 폴더 안에 들어가서 아래와 같이 설정
+>    - git init
+>    - git config --global --add safe.directory 저장소 폴더 위치
+>    - git config --global user.email "유저 메일 주소"
+>    - git config --global user.name "유저 네임"
 
-Say what the step will be
-
-```
-Give the example
-```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+* [Express]() - 웹 프레임워크
+* [NPM]() - 의존성 관리
 
 ## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+버전 관리법으로 [SemVer](http://semver.org/)을 사용하고 있습니다.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Sarifor** - 프로젝트 구성, 구현, 트러블슈팅, 구현
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+이 프로젝트는 MIT 라이센스를 준수합니다.
