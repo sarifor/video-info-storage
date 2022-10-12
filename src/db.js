@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 (async () => {
   try {
     await mongoose.connect(
-      process.env.DB_URL,
+      // process.env.DB_URL,
       {
         useNewUrlParser: true,
         useFindAndModify: false,

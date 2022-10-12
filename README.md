@@ -21,13 +21,20 @@
 > 5. git clone https://github.com/sarifor/video-info-storage.git
 > 6. cd 커맨드로 저장소 폴더 안에 들어가서 npm install 실행하여, package.json에 기술되어 있는 패키지 설치
 > 7. npm run dev:start로 프로젝트 실행
-> 8. http://localhost:3000에 접속하여, Header에 Video Storage Info라고 써 있는 화면이 뜨면 성공!
+> 8. http://localhost:3000에 접속하여, 상단에 Video Storage Info라고 써 있는 화면이 뜨면 성공!
 >    - 「すべてのパブリックネットワークとプライベートネットワークで、Windowsファイアウォールにより[パッケージ名]の機能のいくつかがブロックされています」のようなアラートが出たら、「プライベートネットワーク」にチェックを入れ「アクセスを許可する」をクリック
-> 9. Git 커맨드를 사용하려면, cd 커맨드로 저장소 폴더 안에 들어가서 아래와 같이 설정
->    - git init
->    - git config --global --add safe.directory 저장소 폴더 위치
->    - git config --global user.email "유저 메일 주소"
->    - git config --global user.name "유저 네임"
+> 9. 환경변수를 사용하려면, db.js의 process.env.DB_URL과 index.js의 process.env.SESSION_SECRET의 코멘트아웃을 해제하고, .env_draft를 .env로 이름 변경 후 각 변수에 본인이 쓰는 값을 할당.
+>    - AWS_ID = s3에 접속하기 위한 Amazon AWS Access Key 할당
+>    - AWS_SECRET = s3에 접속하기 위한 Amazon AWS Secret key 할당
+>    - DB_URL = MongoDB Atlas URL 할당
+>    - NODE_MODULES_CACHE = false // 수정 불필요
+>    - NPM_CONFIG_PRODUCTION = false // 수정 불필요
+>    - SESSION_SECRET = 원하는 문자열 할당
+> 10. Git 커맨드를 사용하려면, cd 커맨드로 저장소 폴더 안에 들어가서 아래와 같이 설정
+>     - git init
+>     - git config --global --add safe.directory 저장소 폴더 위치
+>     - git config --global user.email "유저 메일 주소"
+>     - git config --global user.name "유저 네임"
 
 
 ## Built With
