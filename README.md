@@ -15,7 +15,7 @@ https://aqueous-crag-80315.herokuapp.com/
 ![image](./component_diagram.png)
 
 ## DB ERD
-(추후 보충)
+![image](./erd.png)
 
 ## Getting Started
 로컬 컴퓨터에서 Visual Studio Code로 프로젝트를 실행하는 방법에 대해 설명하겠습니다.
