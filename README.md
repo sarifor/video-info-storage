@@ -1,4 +1,4 @@
-# Video Storage Info
+# Video Info Storage
 좋아하는 영상의 정보를 올려서 다른 사용자들과 공유하는 사이트입니다.
 https://aqueous-crag-80315.herokuapp.com/
 
